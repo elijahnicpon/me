@@ -5,6 +5,18 @@ import { createRouter, createWebHistory } from 'vue-router'
 import About from './pages/About.vue'
 import Contact from './pages/Contact.vue'
 import Files from './pages/Files.vue'
+import { createStore } from 'vuex'
+
+const store = createStore({
+    state: {
+        selectedFile: null
+    },
+    mutations: {
+        setSelectedFile(state, file) {
+            state.selectedFile = file;
+        }
+    }
+});
 
 const routes = [
     { path: '/', component: About },
@@ -17,5 +29,5 @@ const router = createRouter({
     routes
 })
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(router).use(store).mount('#app')
 

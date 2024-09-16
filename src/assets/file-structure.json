@@ -1,0 +1,89 @@
+[
+  {
+    "name": "education",
+    "type": "folder",
+    "children": [
+      {
+        "name": "gatech.md",
+        "type": "file"
+      }
+    ]
+  },
+  {
+    "name": "elijah_nicpon_resume_2024.pdf",
+    "type": "file"
+  },
+  {
+    "name": "experience",
+    "type": "folder",
+    "children": [
+      {
+        "name": "gatech.md",
+        "type": "file"
+      },
+      {
+        "name": "kudelski_security.md",
+        "type": "file"
+      },
+      {
+        "name": "lockchain.md",
+        "type": "file"
+      },
+      {
+        "name": "mongodb.md",
+        "type": "file"
+      },
+      {
+        "name": "newfields.md",
+        "type": "file"
+      }
+    ]
+  },
+  {
+    "name": "projects",
+    "type": "folder",
+    "children": [
+      {
+        "name": "coursework",
+        "type": "folder",
+        "children": [
+          {
+            "name": "fish.md",
+            "type": "file"
+          },
+          {
+            "name": "plan_t.md",
+            "type": "file"
+          },
+          {
+            "name": "sonicML.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "hackathons",
+        "type": "folder",
+        "children": [
+          {
+            "name": "barbie_bell_and_kenoa.md",
+            "type": "file"
+          },
+          {
+            "name": "flashys.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "papers",
+        "type": "folder",
+        "children": []
+      },
+      {
+        "name": "spoony.md",
+        "type": "file"
+      }
+    ]
+  }
+]

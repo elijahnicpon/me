@@ -1,64 +1,77 @@
 <template>
-    <div class="w-full md:w-3/4 h-full p-4 relative">
-        <div v-if="selectedFile">
-            <div v-if="isMarkdownFile(selectedFile)" class="flex justify-end">
-                <button @click="toggleMarkdownView">
-                    {{ markdownView === 'plaintext' ? 'Show Formatted' : 'Show Plaintext' }}
-                </button>
-            </div>
-            <div v-if="isPdfFile(selectedFile)" class="flex justify-center">
-                <iframe :src="selectedFile.url" class="h-full w-full" />
-            </div>
-            <div v-if="isMarkdownFile(selectedFile)">
-                <div v-if="markdownView === 'plaintext'" class="whitespace-pre-wrap overflow-auto h-full">
-                    <pre>{{ markdownContent }}</pre>
-                </div>
-                <div v-else class="prose">
-                    <div v-html="formattedMarkdown"></div>
-                </div>
-            </div>
+  <div class="file-viewer p-4">
+    <div v-if="selectedFile">
+      <div v-if="selectedFile.type === 'pdf'" class="flex justify-center">
+        <embed :src="getFilePath(selectedFile)" type="application/pdf" width="100%" height="600px" />
+      </div>
+      <div v-else-if="selectedFile.type === 'md'" class="relative">
+        <div class="absolute top-0 right-0">
+          <button @click="toggleView" class="bg-blue-500 text-white px-2 py-1 rounded">
+            {{ isPlaintext ? 'Formatted' : 'Plaintext' }}
+          </button>
         </div>
-        <div v-else class="flex items-center justify-center h-full">
-            <p>Please select a file to view.</p>
+        <div v-if="isPlaintext" class="mt-8">
+          <pre class="whitespace-pre-wrap overflow-x-auto">
+            <code>{{ mdContent }}</code>
+          </pre>
         </div>
+        <div v-else class="mt-8" v-html="formattedMdContent"></div>
+      </div>
     </div>
+    <div v-else class="text-center text-gray-500">
+      Please select a file to view its contents.
+    </div>
+  </div>
 </template>
 
 <script>
-import { ref } from 'vue';
-import marked from 'marked';
+import { ref, computed, watch } from 'vue';
+import { useStore } from 'vuex';
+import { marked } from 'marked'; // Updated import
 
 export default {
-    setup() {
-        const selectedFile = ref(null);
-        const markdownView = ref('plaintext');
-        const markdownContent = ref('');
-        const formattedMarkdown = ref('');
+  name: 'FileViewer',
+  setup() {
+    const store = useStore();
+    const isPlaintext = ref(true);
+    const mdContent = ref('');
 
-        const toggleMarkdownView = () => {
-            markdownView.value = markdownView.value === 'plaintext' ? 'formatted' : 'plaintext';
-        };
+    const selectedFile = computed(() => store.state.selectedFile);
 
-        const isPdfFile = (file) => file.extension === 'pdf';
-        const isMarkdownFile = (file) => file.extension === 'md';
+    const formattedMdContent = computed(() => {
+      return marked(mdContent.value);
+    });
 
-        const loadMarkdownFile = async (file) => {
-            const response = await fetch(file.url);
-            const text = await response.text();
-            markdownContent.value = text;
-            formattedMarkdown.value = marked(text);
-        };
+    const toggleView = () => {
+      isPlaintext.value = !isPlaintext.value;
+    };
 
-        return {
-            selectedFile,
-            markdownView,
-            markdownContent,
-            formattedMarkdown,
-            toggleMarkdownView,
-            isPdfFile,
-            isMarkdownFile,
-            loadMarkdownFile,
-        };
-    },
+    const getFilePath = (file) => {
+      return `../assets/files/${file.name}`;
+    };
+
+    // Simulating file content loading
+    const loadFileContent = async (file) => {
+      if (file.type === 'md') {
+        const response = await fetch(getFilePath(file));
+        mdContent.value = await response.text();
+      }
+    };
+
+    watch(selectedFile, (newFile) => {
+      if (newFile && newFile.type === 'md') {
+        loadFileContent(newFile);
+      }
+    });
+
+    return {
+      selectedFile,
+      isPlaintext,
+      mdContent,
+      formattedMdContent,
+      toggleView,
+      getFilePath,
+    };
+  },
 };
 </script>
