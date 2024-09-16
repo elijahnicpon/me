@@ -23,7 +23,7 @@ export default {
   },
   setup() {
     const fileStructure = ref(fileStructureData);
-    console.log(fileStructure.value);
+
     return {
       fileStructure
     };
