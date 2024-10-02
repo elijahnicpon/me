@@ -1,9 +1,9 @@
 <template>
     <div class="bottom-bar items-center flex justify-between border space-x-6 p-0 border-vscode-dark-border">
         <div class="left-icons flex">
-            <a href="https://github.com/elijahnicpon/my-site" target="_blank" rel="noopener noreferrer" class="stroke-vscode-dark-text hover:stroke-white flex flex-row items-center p-2 border-r border-vscode-dark-border fill-vscode-dark-text hover:fill-white hover:text-white hover:bg-vscode-dark-hover ">
+            <button @click="openModal" class="stroke-vscode-dark-text hover:stroke-white flex flex-row items-center p-2 border-r border-vscode-dark-border fill-vscode-dark-text hover:fill-white hover:text-white hover:bg-vscode-dark-hover">
                 <svg width="32" height="32" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title>ionicons-v5-d</title><circle cx="160" cy="96" r="48" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><circle cx="160" cy="416" r="48" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><line x1="160" y1="368" x2="160" y2="144" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><circle cx="352" cy="160" r="48" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M352,208c0,128-192,48-192,160" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/></svg>
-            </a>
+            </button>
         </div>
         <div class=" flex">
             <a href="https://github.com/elijahnicpon/" target="_blank" rel="noopener noreferrer" class="flex flex-row items-center p-3 border-l border-vscode-dark-border fill-vscode-dark-text hover:fill-white hover:text-white hover:bg-vscode-dark-hover ">
@@ -24,13 +24,34 @@
             </a>
         </div>
     </div>
+    <Modal v-if="isModalOpen" @close="closeModal">
+        <h2 class="text-xl mb-4">Modal Content</h2>
+        <p>This is a simple modal. Click outside to close.</p>
+    </Modal>
 </template>
 
 <script>
+import Modal from './Modal.vue'
 
-  export default {
-    name: 'BottomBar'
-  }
+export default {
+    name: 'BottomBar',
+    components: {
+        Modal
+    },
+    data() {
+        return {
+            isModalOpen: false
+        }
+    },
+    methods: {
+        openModal() {
+            this.isModalOpen = true
+        },
+        closeModal() {
+            this.isModalOpen = false
+        }
+    }
+}
 </script>
 
 <style>

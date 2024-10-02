@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row items-center justify-between p-20">
+  <div class="flex flex-row items-center justify-between p-20 relative">
     <div class="css-blurry-gradient-pink z-10"></div>
     <div class="css-blurry-gradient-purple z-10"></div>
     <div class="css-blurry-gradient-blue z-10"></div>
@@ -16,12 +16,12 @@
     </div>
 
     <!-- Profile Picture (only on non-mobile screens) -->
-     <div class="flex ">
+     <div class="flex relative z-20">
        <img
        v-if="!isMobile"
        src="../assets/me-pic.jpg"
        alt="Elijah Nicpon"
-       class="z-0 w-80 h-110 rounded-full ml-10 transition-all duration-300 filter blur-sm hover:blur-none"
+       class="z-20 w-80 h-110 rounded-full ml-10 transition-all duration-300 filter blur-sm hover:blur-none"
        />
       </div>
   </div>
@@ -105,6 +105,12 @@ export default {
   opacity: 0.5;
   z-index: 10;
   animation: float-rotate-pulse 6s ease-in-out infinite;
+}
+
+.css-blurry-gradient-purple,
+.css-blurry-gradient-pink,
+.css-blurry-gradient-blue {
+  pointer-events: none; /* Add this line */
 }
 
 .line-1 {

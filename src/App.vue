@@ -7,7 +7,7 @@ import BottomBar from './components/BottomBar.vue'
 <template>
   <div class="font-mono text-vscode-dark-text bg-vscode-dark-background border-vscode-dark-border w-screen h-screen flex flex-col overflow-hidden">
     <TabBar class="w-full h-16 fixed top-0 left-0 z-50   " />
-    <router-view class="w-full pt-16 pb-12 flex-grow overflow-auto" />
+    <router-view class="w-full pt-16 flex-grow overflow-auto" />
     <BottomBar class="w-full h-12 fixed bottom-0 left-0 z-50 md:block" />
   </div>
   <!-- <HelloWorld msg="Vite + Vue" /> -->
