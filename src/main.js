@@ -31,3 +31,4 @@ const router = createRouter({
 
 createApp(App).use(router).use(store).mount('#app')
 
+console.log('Vue app initialized');

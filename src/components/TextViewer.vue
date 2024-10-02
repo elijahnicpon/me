@@ -1,3 +1,5 @@
+## OLD IN PROGRESS MARKDOWN VIEWER THAT IS BASICALLY JUST A TEXT VIEWER ATM BUT WITH WORKING IMAGES... USE LATER?
+
 <template>
     <div class="flex flex-col h-full bg-gray-800 text-gray-300 overflow-y-auto rounded">
 

@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "generate-file-structure": "node src/scripts/generate-file-structure.js"
+    "generate-file-structure": "node src/scripts/generate-file-structure.js",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "marked": "^14.1.2",
