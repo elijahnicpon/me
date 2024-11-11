@@ -13,7 +13,9 @@ npm run generate-file-structure
 cd dist
 
 # if you are deploying to a custom domain
-# echo 'www.example.com' > CNAME
+# TODO: (from github) Your site's DNS settings are using a custom subdomain, elijah.nicpon.com, that is set up as an A record. We recommend you change this to a CNAME record pointing to elijahnicpon.github.io. For more information, see documentation (InvalidARecordError). 
+# echo 'elijah.nicpon.com' > CNAME
+echo 'elijahnicpon.github.io' > CNAME
 
 git init
 git add -A
