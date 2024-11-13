@@ -1,5 +1,11 @@
-# Vue 3 + Vite
+# My personal website!
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Thanks for checking out the code to my personal website! 
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+It's built with Vue 3 and Vite, and hosted on GitHub Pages when I don't break it. 
+
+The website is fully static, and the file structure is generated based on the /files directory in the repo during deployment. 
+
+The design is inspired by an IDE, combining aspects of other personal websites I've admired over the years. I've put a lot of thought into the design and UX of the site, so if you'd like to fork it, all I ask is for you to give me a shoutout and proper attribution! 
+
+If you'd like to get in touch, you can find me on [LinkedIn](https://www.linkedin.com/in/elijahnicpon/) or [email me](mailto:eliajh@nicpon.com). 
